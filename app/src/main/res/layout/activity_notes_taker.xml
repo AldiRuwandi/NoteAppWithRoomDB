@@ -70,6 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="5dp"
+        android:hint="Note..."
         android:layout_marginTop="10dp"
         android:background="@color/white"
         android:padding="8dp"
