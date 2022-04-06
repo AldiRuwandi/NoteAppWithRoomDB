@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipe_refresh"
     android:layout_width="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
 
@@ -62,25 +63,36 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_home"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_above="@id/adView"
             android:layout_below="@id/search_view" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/adView"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
+            android:layout_marginBottom="15dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginBottom="24dp"
             android:clickable="true"
             android:contentDescription="@string/todo"
             android:focusable="true"
             android:src="@drawable/ic_baseline_add_24"
             app:backgroundTint="@color/gray"
             app:tint="@color/white" />
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            ads:adSize="FULL_BANNER"
+            ads:adUnitId="@string/banner_ads" />
 
     </RelativeLayout>
 

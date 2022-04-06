@@ -20,6 +20,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import uz.context.notewithroom.R
@@ -41,6 +44,7 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
     private lateinit var view: View
     private lateinit var linearLayout: LinearLayout
     private lateinit var sharedManager: SharedManager
+    private lateinit var mAdView: AdView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -92,6 +96,15 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
             }
         })
         isCheck()
+
+        admob()
+    }
+
+    private fun admob() {
+        MobileAds.initialize(this) {}
+        mAdView = findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
     }
 
     private fun filter(newText: CharSequence) {
@@ -227,7 +240,7 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
                 if (notes.isNotEmpty()) {
                     database.mainDao().deleteAllData()
                     notes.remove(selectedNote)
-                    snackBar("All notes Deleted")
+                    snackBar("Deleted all notes")
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()

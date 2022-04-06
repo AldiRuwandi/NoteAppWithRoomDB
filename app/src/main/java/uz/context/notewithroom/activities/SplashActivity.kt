@@ -22,7 +22,7 @@ class SplashActivity : AppCompatActivity() {
         )
 
 
-        val countDownTimer = object : CountDownTimer(1000, 1300) {
+        val countDownTimer = object : CountDownTimer(600, 600) {
             override fun onTick(p0: Long) {}
 
             override fun onFinish() {
