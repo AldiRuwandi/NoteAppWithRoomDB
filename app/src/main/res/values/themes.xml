@@ -28,10 +28,11 @@
         <!-- Customize your theme here. -->
     </style>
     <!-- Splash Screen. -->
-    <style name="Theme.AppCompat.SplashScreen" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/white</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/note_icon</item>
-        <!-- Project Name. -->
-        <item name="postSplashScreenTheme">@style/Theme.NoteWithRoom</item>
-    </style>
+    <!--    <style name="Theme.AppCompat.SplashScreen" parent="Theme.SplashScreen">-->
+    <!--        <item name="windowSplashScreenBackground">@color/white</item>-->
+    <!--        <item name="windowSplashScreenAnimatedIcon">@drawable/note_icon</item>-->
+    <!--        &lt;!&ndash; Project Name. &ndash;&gt;-->
+    <!--        <item name="postSplashScreenTheme">@style/Theme.NoteWithRoom</item>-->
+    <!--    </style>-->
+    <!-- Splash Screen -->
 </resources>
