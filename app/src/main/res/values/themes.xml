@@ -36,7 +36,7 @@
     <!--    </style>-->
     <!-- Splash Screen -->
     <style name="AppTheme.Splash" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="android:windowBackground">@drawable/back_ground</item>
+        <item name="android:windowBackground">@drawable/back_img</item>
         <item name="android:windowDisablePreview">true</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
