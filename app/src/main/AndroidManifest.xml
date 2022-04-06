@@ -11,10 +11,11 @@
         android:theme="@style/Theme.NoteWithRoom">
         <activity
             android:name=".activities.NotesTakerActivity"
-            android:theme="@style/Theme.NoteWithRoom.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.NoteWithRoom.NoActionBar" />
         <activity
             android:name=".activities.MainActivity"
+            android:theme="@style/Theme.AppCompat.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

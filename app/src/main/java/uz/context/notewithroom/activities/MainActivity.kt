@@ -13,7 +13,9 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.PopupMenu
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.cardview.widget.CardView
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -37,10 +39,15 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
     private var selectedNote: Notes? = null
     private lateinit var view: View
     private lateinit var linearLayout: LinearLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Thread.sleep(1000)
+        val splashScreen = installSplashScreen()
         setContentView(R.layout.activity_main)
+//        splashScreen.setKeepOnScreenCondition { true }
 
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         initViews()
 
     }
@@ -68,6 +75,7 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
             val intent = Intent(this, NotesTakerActivity::class.java)
             startActivityForResult(intent, 101)
         }
+
         searchView.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
@@ -103,6 +111,7 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
                 val newNotes = data!!.getSerializableExtra("note") as Notes
                 database.mainDao().insert(newNotes)
                 notes.clear()
+                updateRecyclerView(notes)
                 notes.addAll(database.mainDao().getAll())
                 noteListAdapter!!.notifyDataSetChanged()
                 isCheck()
@@ -112,6 +121,7 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
                 val newNote = data!!.getSerializableExtra("note") as Notes
                 database.mainDao().update(newNote.ID, newNote.title, newNote.note)
                 notes.clear()
+                updateRecyclerView(notes)
                 notes.addAll(database.mainDao().getAll())
                 noteListAdapter!!.notifyDataSetChanged()
                 isCheck()
@@ -121,7 +131,7 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
 
     private fun updateRecyclerView(notes: ArrayList<Notes>) {
         recyclerView!!.apply {
-            setHasFixedSize(true)
+//            setHasFixedSize(true)
             layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
             noteListAdapter = NoteAdapter(this@MainActivity, notes, notesClickListener)
             adapter = noteListAdapter

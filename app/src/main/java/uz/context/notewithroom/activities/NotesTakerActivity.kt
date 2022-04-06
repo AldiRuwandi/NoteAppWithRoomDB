@@ -3,13 +3,14 @@ package uz.context.notewithroom.activities
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import uz.context.notewithroom.R
+import uz.context.notewithroom.adapter.NoteAdapter
 import uz.context.notewithroom.model.Notes
 import java.text.SimpleDateFormat
 import java.util.*
@@ -39,9 +40,11 @@ class NotesTakerActivity : AppCompatActivity() {
         imageSave = findViewById(R.id.imageView_save)
         imageBack = findViewById(R.id.back_image)
         titleText = findViewById(R.id.title_text)
+
         imageBack.setOnClickListener {
             finish()
         }
+
         notes = Notes()
 
         try {
@@ -75,6 +78,7 @@ class NotesTakerActivity : AppCompatActivity() {
             val intent = Intent()
             intent.putExtra("note", notes)
             setResult(Activity.RESULT_OK, intent)
+
             finish()
         }
     }

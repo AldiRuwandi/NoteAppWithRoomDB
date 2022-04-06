@@ -15,7 +15,6 @@ import uz.context.notewithroom.R
 import uz.context.notewithroom.click.ItemClickListener
 import uz.context.notewithroom.model.Notes
 import java.util.*
-import kotlin.collections.ArrayList
 
 class NoteAdapter(
     private val context: Context,

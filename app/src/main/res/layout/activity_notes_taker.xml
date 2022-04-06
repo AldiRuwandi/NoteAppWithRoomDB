@@ -67,8 +67,9 @@
 
     <EditText
         android:id="@+id/editText_notes"
+        android:gravity="top"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginHorizontal="5dp"
         android:hint="Note..."
         android:layout_marginTop="10dp"
