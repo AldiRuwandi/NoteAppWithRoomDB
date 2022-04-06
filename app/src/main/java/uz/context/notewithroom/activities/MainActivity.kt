@@ -200,7 +200,9 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
             R.id.delete -> {
                 database.mainDao().delete(selectedNote!!)
                 notes.remove(selectedNote)
+                noteListAdapter?.notifyDataSetChanged()
                 snackBar("Note deleted!")
+                isCheck()
                 return true
             }
         }

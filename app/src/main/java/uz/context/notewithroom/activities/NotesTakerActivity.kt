@@ -70,7 +70,7 @@ class NotesTakerActivity : AppCompatActivity() {
             val title = editTitle.text.toString().trim()
             val des = editNote.text.toString().trim()
 
-            if (des.isEmpty()) {
+            if (des.isEmpty() || title.isEmpty()) {
                 val snackBar = Snackbar.make(it, "Please enter some notes!", Snackbar.LENGTH_LONG)
                 snackBar.show()
                 return@setOnClickListener
