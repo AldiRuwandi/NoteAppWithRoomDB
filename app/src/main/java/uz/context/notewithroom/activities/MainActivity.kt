@@ -26,6 +26,7 @@ import uz.context.notewithroom.R
 import uz.context.notewithroom.adapter.NoteAdapter
 import uz.context.notewithroom.click.ItemClickListener
 import uz.context.notewithroom.database.RoomDB
+import uz.context.notewithroom.memory.SharedManager
 import uz.context.notewithroom.model.Notes
 
 class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
     private var selectedNote: Notes? = null
     private lateinit var view: View
     private lateinit var linearLayout: LinearLayout
+    private lateinit var sharedManager: SharedManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +56,7 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun initViews() {
+        sharedManager = SharedManager(this)
         linearLayout = findViewById(R.id.linear_gone)
         recyclerView = findViewById(R.id.recycler_home)
         fabAdd = findViewById(R.id.fab_add)
@@ -132,7 +135,11 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
     private fun updateRecyclerView(notes: ArrayList<Notes>) {
         recyclerView!!.apply {
 //            setHasFixedSize(true)
-            layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+            layoutManager = if (!sharedManager.getSavedManager()) {
+                StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+            } else {
+                LinearLayoutManager(this@MainActivity)
+            }
             noteListAdapter = NoteAdapter(this@MainActivity, notes, notesClickListener)
             adapter = noteListAdapter
         }
@@ -209,10 +216,12 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
         when (item.itemId) {
             R.id.list_1 -> {
                 recyclerView!!.layoutManager = LinearLayoutManager(this)
+                sharedManager.isSavedManager(true)
             }
             R.id.grid_2 -> {
                 recyclerView!!.layoutManager =
                     StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+                sharedManager.isSavedManager(false)
             }
             R.id.delete_all -> {
                 if (notes.isNotEmpty()) {
