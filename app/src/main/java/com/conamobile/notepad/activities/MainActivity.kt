@@ -12,6 +12,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.cardview.widget.CardView
@@ -31,6 +32,7 @@ import com.conamobile.notepad.click.ItemClickListener
 import com.conamobile.notepad.database.RoomDB
 import com.conamobile.notepad.memory.SharedManager
 import com.conamobile.notepad.model.Notes
+import com.crowdfire.cfalertdialog.CFAlertDialog
 
 class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
     private var recyclerView: RecyclerView? = null
@@ -103,7 +105,7 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
 
     private fun actionBarTitle() {
         if (supportActionBar != null)
-        supportActionBar!!.title = getString(R.string.notes)
+            supportActionBar!!.title = getString(R.string.notes)
     }
 
     private fun admob() {
@@ -153,7 +155,6 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
 
     private fun updateRecyclerView(notes: ArrayList<Notes>) {
         recyclerView!!.apply {
-//            setHasFixedSize(true)
             layoutManager = if (!sharedManager.getSavedManager()) {
                 StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
             } else {
@@ -246,15 +247,41 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener {
             }
             R.id.delete_all -> {
                 if (notes.isNotEmpty()) {
-                    database.mainDao().deleteAllData()
-                    notes.remove(selectedNote)
-                    snackBar("Deleted all notes")
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
+                    showAlertDialog()
                 }
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+
+    private fun showAlertDialog() {
+        val alertDialog = CFAlertDialog.Builder(this)
+            .setDialogStyle(CFAlertDialog.CFAlertStyle.ALERT)
+            .setTitle(getString(R.string.are_you))
+            .addButton(
+                getString(R.string.yes),
+                -1,
+                -1,
+                CFAlertDialog.CFAlertActionStyle.NEGATIVE,
+                CFAlertDialog.CFAlertActionAlignment.JUSTIFIED
+            ) { dialog, _ ->
+                database.mainDao().deleteAllData()
+                notes.clear()
+                updateRecyclerView(notes)
+                snackBar("Deleted all data")
+                isCheck()
+                dialog.dismiss()
+            }
+            .addButton(
+                getString(R.string.yoq),
+                -1,
+                -1,
+                CFAlertDialog.CFAlertActionStyle.POSITIVE,
+                CFAlertDialog.CFAlertActionAlignment.JUSTIFIED
+            ) { dialog, _ ->
+                dialog.dismiss()
+            }
+        alertDialog.show()
     }
 }

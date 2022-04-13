@@ -14,4 +14,7 @@
     <string name="empty">Empty…</string>
     <string name="banner_ads">ca-app-pub-7450127230297437/8226201118</string>
     <string name="interstitial_ad">ca-app-pub-7450127230297437/9156139405</string>
+    <string name="are_you">Do you want to delete all notes?</string>
+    <string name="yes">Yes</string>
+    <string name="yoq">No</string>
 </resources>

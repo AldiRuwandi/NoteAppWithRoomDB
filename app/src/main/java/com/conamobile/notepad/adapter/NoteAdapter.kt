@@ -40,7 +40,7 @@ class NoteAdapter(
             textDate.isSelected = true
 
             if (note.pinned) {
-                imagePin.setImageResource(R.drawable.ic_baseline_push_pin_24)
+                imagePin.setImageResource(R.drawable.img_pin)
             } else {
                 imagePin.setImageResource(0)
             }

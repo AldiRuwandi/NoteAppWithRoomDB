@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/DataBase/NoteAppNew/app/src/main/res/drawable/ic_baseline_push_pin_24.xml" value="0.1525" />
+        <entry key="..\:/Users/DataBase/NoteAppNew/app/src/main/res/layout/note_list.xml" value="0.2552083333333333" />
         <entry key="..\:/Users/DataBase/NoteAppPlay/app/src/main/res/layout/activity_main.xml" value="0.2094017094017094" />
         <entry key="..\:/Users/DataBase/NoteAppPlay/app/src/main/res/layout/activity_notes_taker.xml" value="0.2094017094017094" />
         <entry key="..\:/Users/DataBase/NoteAppPlay/app/src/main/res/layout/activity_splash_activiy.xml" value="0.20675105485232068" />

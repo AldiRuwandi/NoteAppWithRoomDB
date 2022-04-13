@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.conamobile.notepad.R
 import com.conamobile.notepad.model.Notes
@@ -66,11 +67,10 @@ class NotesTakerActivity : AppCompatActivity() {
             val des = editNote.text.toString().trim()
 
             if (des.isEmpty() || title.isEmpty()) {
-                val snackBar = Snackbar.make(it, "Please enter some notes!", Snackbar.LENGTH_LONG)
-                snackBar.show()
+                Toast.makeText(this, "Please enter some data!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            val simpleDateFormat = SimpleDateFormat("EEE, d MMM yyyy HH:mm a")
+            val simpleDateFormat = SimpleDateFormat("EEE, d MMM yyyy HH:mm")
             val date = Date()
 
             if (!isOnlNote) {
