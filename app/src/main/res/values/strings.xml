@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Notes</string>
+    <string name="app_name">Notepad</string>
     <string name="todo">todo</string>
     <string name="notes">Notes</string>
     <string name="date">Date</string>
@@ -12,6 +12,6 @@
     <string name="grid">Grid</string>
     <string name="delete_all_notes">Delete All Notes</string>
     <string name="empty">Empty…</string>
-    <string name="interstital_ad">ca-app-pub-3940256099942544/1033173712</string>
-    <string name="banner_ads">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="banner_ads">ca-app-pub-7450127230297437/8226201118</string>
+    <string name="interstitial_ad">ca-app-pub-7450127230297437/9156139405</string>
 </resources>

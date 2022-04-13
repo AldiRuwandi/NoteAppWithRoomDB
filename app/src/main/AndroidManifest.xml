@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="uz.context.notewithroom">
+    package="com.conamobile.notepad">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,12 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NoteWithRoom">
         <activity
-            android:name=".activities.MainActivity"
+            android:name="com.conamobile.notepad.activities.MainActivity"
             android:exported="true" />
         <activity
-            android:name=".activities.SplashActivity"
-            android:theme="@style/AppTheme.Splash"
-            android:exported="true">
+            android:name="com.conamobile.notepad.activities.SplashActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,14 +25,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.NotesTakerActivity"
+            android:name="com.conamobile.notepad.activities.NotesTakerActivity"
             android:exported="false"
             android:theme="@style/Theme.NoteWithRoom.NoActionBar" />
 
-        <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            android:value="ca-app-pub-3940256099942544~3347511713" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
